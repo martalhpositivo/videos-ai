@@ -34,6 +34,19 @@ total del video y las dimensiones se calculan automáticamente desde el config.
 > audio). Cuando agregues voz en off, puedes sustituirlo por timestamps reales
 > de Whisper con el comando `/add-captions` del plugin.
 
+### Marca: Automarket Durango
+
+Identidad visual real del concesionario (rojo `#EB2026`, fondo `#0D0D0F`, ámbar
+`#FCB900`, Inter), en `src/config/brands/automarket-durango.ts`. La usan:
+
+- **`AutomarketReel`** — reel de marca con sus pilares (taller, transparencia,
+  financiación). Edita `automarketReelConfig`.
+- **`AutomarketCar`** — ficha **"Coche de la semana"**: foto + modelo + precio +
+  specs + CTA, animada. Edita `src/config/car.config.ts` (pon la foto en
+  `public/cars/` y su ruta en `photo`).
+- Los **subtítulos quemados** (`npm run subtitle`) salen con su marca: palabra
+  activa en ámbar y scrim para legibilidad sobre cualquier metraje.
+
 - **`VideoWithCaptions`** — quema **subtítulos animados estilo TikTok** sobre un
   video existente, transcribiendo el audio automáticamente con **Whisper**
   (local, en español, sin API key). Detecta solas las dimensiones, duración y

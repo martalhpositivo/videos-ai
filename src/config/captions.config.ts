@@ -23,6 +23,9 @@ export const captionsConfig = {
   fontSize: 92,
   uppercase: true,
 
+  /** Degradado sutil detrás de los subtítulos para que se lean sobre cualquier video. */
+  scrim: true,
+
   /** "bottom" | "center" — dónde se colocan los subtítulos. */
   position: "bottom" as "bottom" | "center",
 

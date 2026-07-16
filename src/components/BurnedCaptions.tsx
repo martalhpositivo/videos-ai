@@ -56,8 +56,16 @@ export const BurnedCaptions: React.FC<{
 
   const stroke = `${config.strokeWidth}px ${config.strokeColor}`;
 
+  const scrimGradient =
+    config.position === "center"
+      ? "radial-gradient(60% 30% at 50% 50%, rgba(0,0,0,0.55), transparent 70%)"
+      : "linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.35) 18%, transparent 40%)";
+
   return (
     <AbsoluteFill style={{ fontFamily: config.fontFamily }}>
+      {config.scrim ? (
+        <AbsoluteFill style={{ background: scrimGradient, opacity: appear }} />
+      ) : null}
       <div
         style={{
           position: "absolute",

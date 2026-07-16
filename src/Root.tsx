@@ -3,6 +3,8 @@ import { Composition } from "remotion";
 import { ProductivityReel } from "./ProductivityReel";
 import { reelConfig } from "./config/reel.config";
 import { automarketReelConfig } from "./config/brands/automarket-durango";
+import { AutomarketCar } from "./AutomarketCar";
+import { carConfig } from "./config/car.config";
 import { totalDuration } from "./lib/timeline";
 import {
   VideoWithCaptions,
@@ -32,6 +34,17 @@ export const RemotionRoot: React.FC = () => {
         width={automarketReelConfig.width}
         height={automarketReelConfig.height}
         defaultProps={{ config: automarketReelConfig }}
+      />
+
+      {/* Ficha "Coche de la semana" (100% desde car.config.ts). */}
+      <Composition
+        id="AutomarketCar"
+        component={AutomarketCar}
+        durationInFrames={carConfig.durationInSeconds * carConfig.fps}
+        fps={carConfig.fps}
+        width={carConfig.width}
+        height={carConfig.height}
+        defaultProps={{ config: carConfig }}
       />
 
       {/* Subtítulos automáticos quemados sobre un video (via `npm run subtitle`). */}
