@@ -106,5 +106,7 @@ export interface ReelConfig {
   music: MusicConfig;
   captionStyle: CaptionStyle;
   progressBar: { enabled: boolean };
+  /** Marca de agua con el @usuario. Omítelo o ponlo en false para no mostrarla. */
+  watermark?: { enabled: boolean };
   scenes: SceneConfig[];
 }

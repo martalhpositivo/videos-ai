@@ -81,7 +81,7 @@ export const ProductivityReel: React.FC<{ config?: ReelConfig }> = ({
       {config.progressBar.enabled ? (
         <ProgressBar segments={segments} color={brand.colors.primary} />
       ) : null}
-      <Watermark brand={brand} />
+      {config.watermark?.enabled ? <Watermark brand={brand} /> : null}
 
       {/* Optional background music. */}
       {music.src ? (
