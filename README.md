@@ -34,6 +34,49 @@ total del video y las dimensiones se calculan automáticamente desde el config.
 > audio). Cuando agregues voz en off, puedes sustituirlo por timestamps reales
 > de Whisper con el comando `/add-captions` del plugin.
 
+- **`VideoWithCaptions`** — quema **subtítulos animados estilo TikTok** sobre un
+  video existente, transcribiendo el audio automáticamente con **Whisper**
+  (local, en español, sin API key). Detecta solas las dimensiones, duración y
+  fps del video de entrada.
+
+## Subtitular un video automáticamente
+
+Un solo comando, sin API keys. Corre esto **en tu máquina** (donde vive el
+video y tienes internet abierto para bajar Whisper la primera vez):
+
+```console
+npm run subtitle -- mi-video.mov
+```
+
+Opciones:
+
+```console
+npm run subtitle -- clips/anuncio.mp4 --lang es --model medium --out anuncio-final.mp4
+```
+
+- `--lang`  idioma del audio (por defecto `es`).
+- `--model` calidad de Whisper: `tiny` · `base` · `small` · `medium` (por
+  defecto) · `large-v3`. Más grande = más preciso pero más lento.
+- `--out`   ruta del MP4 de salida.
+
+Qué hace por dentro:
+1. Extrae el audio del video a 16 kHz con ffmpeg.
+2. Transcribe con **Whisper.cpp** local → texto con tiempos por palabra
+   (descarga el modelo solo la primera vez).
+3. Quema los subtítulos animados sobre el video (composición
+   `VideoWithCaptions`) y renderiza el MP4 final.
+
+También te deja un `mi-video.captions.json` editable: si quieres corregir una
+palabra o un tiempo, lo editas y vuelves a renderizar desde el Studio.
+
+Personaliza el estilo (color activo, tamaño, contorno, posición) en
+`src/config/captions.config.ts`.
+
+> **Nota sobre este entorno:** en Claude Code on the web la red está restringida
+> y no se pueden bajar los modelos de Whisper ni traer videos grandes de Drive,
+> por eso este comando está pensado para tu máquina local. La parte de quemado y
+> render sí quedó verificada aquí; la transcripción corre en tu Mac.
+
 ## Rendering in Claude Code on the web
 
 The network policy blocks Remotion from downloading its bundled Chromium, so
