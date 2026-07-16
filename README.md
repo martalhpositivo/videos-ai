@@ -54,12 +54,29 @@ Identidad visual real del concesionario (rojo `#EB2026`, fondo `#0D0D0F`, ámbar
 
 ## Subtitular un video automáticamente
 
-Un solo comando, sin API keys. Corre esto **en tu máquina** (donde vive el
-video y tienes internet abierto para bajar Whisper la primera vez):
+Un solo comando, sin API keys. Corre esto **en tu ordenador** (Windows, Mac o
+Linux), donde vive el video y tienes internet abierto para bajar Whisper la
+primera vez:
 
 ```console
 npm run subtitle -- mi-video.mov
 ```
+
+### Puesta en marcha en Windows (paso a paso)
+
+1. Instala **Node.js LTS** desde https://nodejs.org (siguiente-siguiente-fin).
+2. Descarga este proyecto y descomprímelo (o `git clone`).
+3. Abre **PowerShell** en la carpeta del proyecto (clic derecho → "Abrir en
+   Terminal") y ejecuta una vez:
+   ```powershell
+   npm install
+   ```
+4. Copia tu video a esa carpeta y ejecútalo:
+   ```powershell
+   npm run subtitle -- IMG_9323.mov
+   ```
+   La primera vez descarga Whisper (binario precompilado, sin compilar nada).
+   Al terminar tienes `IMG_9323-subtitulado.mp4` en la misma carpeta.
 
 Opciones:
 
@@ -87,8 +104,8 @@ Personaliza el estilo (color activo, tamaño, contorno, posición) en
 
 > **Nota sobre este entorno:** en Claude Code on the web la red está restringida
 > y no se pueden bajar los modelos de Whisper ni traer videos grandes de Drive,
-> por eso este comando está pensado para tu máquina local. La parte de quemado y
-> render sí quedó verificada aquí; la transcripción corre en tu Mac.
+> por eso este comando está pensado para tu ordenador local. La parte de quemado
+> y render sí quedó verificada aquí; la transcripción corre en tu PC.
 
 ## Rendering in Claude Code on the web
 

@@ -20,6 +20,7 @@ import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 import {
   installWhisperCpp,
   downloadWhisperModel,
@@ -66,11 +67,14 @@ if (!fs.existsSync(input)) {
 const publicName = `__subtitle_input${path.extname(input)}`;
 const publicPath = path.join(ROOT, "public", publicName);
 const wavPath = path.join(ROOT, "public", "__subtitle_audio.wav");
-const remotionBin = path.join(
-  ROOT,
-  "node_modules",
-  ".bin",
-  process.platform === "win32" ? "remotion.cmd" : "remotion",
+
+// Ruta al CLI de Remotion como .js, para invocarlo con `node` (evita el shim
+// remotion.cmd, que falla en Windows con Node reciente). Funciona en todas las
+// plataformas y trae ffmpeg incluido.
+const require = createRequire(import.meta.url);
+const remotionCli = path.join(
+  path.dirname(require.resolve("@remotion/cli/package.json")),
+  "remotion-cli.js",
 );
 
 const cleanup = () => {
@@ -92,8 +96,8 @@ const main = async () => {
   console.log("🎧 Extrayendo audio…");
   fs.mkdirSync(path.dirname(wavPath), { recursive: true });
   execFileSync(
-    remotionBin,
-    ["ffmpeg", "-y", "-i", input, "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", wavPath],
+    process.execPath,
+    [remotionCli, "ffmpeg", "-y", "-i", input, "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", wavPath],
     { stdio: "ignore" },
   );
 
