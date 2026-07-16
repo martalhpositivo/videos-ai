@@ -1,18 +1,20 @@
-import { reelConfig } from "./reel.config";
+import { automarketBrand, automarketColors } from "./brands/automarket-durango";
 
 /**
  * Estilo de los subtítulos que se QUEMAN sobre un video existente
- * (flujo `npm run subtitle`). Edita libremente — hereda los colores de marca
- * de reel.config.ts para mantener consistencia.
+ * (flujo `npm run subtitle`). Actualmente usa la marca Automarket Durango.
+ *
+ * Para subtitular con otra marca, cambia el import de arriba por otra marca
+ * de `./brands/` (o edita los valores directamente).
  */
 export const captionsConfig = {
   fps: 30,
 
-  fontFamily: reelConfig.brand.fontFamily,
+  fontFamily: automarketBrand.fontFamily,
 
-  /** Color de la palabra que se está diciendo en ese instante. */
-  activeColor: reelConfig.brand.colors.accent,
-  /** Color del resto de palabras de la línea. */
+  /** Palabra que se está diciendo: ámbar de Automarket (máximo contraste sobre video). */
+  activeColor: automarketColors.amber,
+  /** Resto de palabras de la línea. */
   textColor: "#ffffff",
   /** Contorno para que se lean sobre cualquier fondo. */
   strokeColor: "#000000",

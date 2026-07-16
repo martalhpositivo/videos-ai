@@ -2,6 +2,7 @@ import "./index.css";
 import { Composition } from "remotion";
 import { ProductivityReel } from "./ProductivityReel";
 import { reelConfig } from "./config/reel.config";
+import { automarketReelConfig } from "./config/brands/automarket-durango";
 import { totalDuration } from "./lib/timeline";
 import {
   VideoWithCaptions,
@@ -20,6 +21,17 @@ export const RemotionRoot: React.FC = () => {
         width={reelConfig.width}
         height={reelConfig.height}
         defaultProps={{ config: reelConfig }}
+      />
+
+      {/* Reel de marca Automarket Durango (identidad visual real). */}
+      <Composition
+        id="AutomarketReel"
+        component={ProductivityReel}
+        durationInFrames={totalDuration(automarketReelConfig)}
+        fps={automarketReelConfig.fps}
+        width={automarketReelConfig.width}
+        height={automarketReelConfig.height}
+        defaultProps={{ config: automarketReelConfig }}
       />
 
       {/* Subtítulos automáticos quemados sobre un video (via `npm run subtitle`). */}
