@@ -6,10 +6,33 @@ Claude Code plugin.
 
 ## Compositions
 
-- **`InstagramReel`** (`src/InstagramReel.tsx`) — a data-driven vertical reel
-  template (1080×1920, 30s, 30fps). Edit the `REEL` object at the top of the
-  file to change the copy, emoji, accent colors and per-scene timing without
-  touching the animation code.
+- **`ProductivityReel`** — plantilla profesional de reels verticales
+  (1080×1920, 9:16) para Instagram / TikTok / Shorts, en español y sobre
+  productividad. Es **totalmente config-driven**: subtítulos automáticos,
+  transiciones dinámicas, emojis y colores de marca.
+
+### Editar la plantilla
+
+Todo se edita en **un solo archivo**: `src/config/reel.config.ts`.
+
+- **Colores de marca** → `brand.colors` (primary, secondary, accent, etc.)
+- **@usuario y logo** → `brand.handle`, `brand.logoEmoji`
+- **Escenas** → array `scenes`: cada una tiene `emoji`, `kicker`, `title`,
+  `accent` (opcional) y `durationInSeconds`.
+- **Subtítulos automáticos** → escribe la frase hablada en `scene.captions`;
+  las palabras se sincronizan solas en estilo karaoke (resaltando la activa).
+  Ajusta tamaño, posición y agrupación en `captionStyle`.
+- **Transiciones dinámicas** → `scene.transition.type`: `slide`, `wipe`,
+  `clockWipe`, `flip`, `fade` o `none` (con `direction` y `durationInFrames`).
+- **Música** → coloca un archivo en `public/music/` y ponlo en `music.src`
+  (o genérala con el comando `/add-music` del plugin remotion-superpowers).
+
+Guarda el archivo y el preview (`npm run dev`) se actualiza solo. La duración
+total del video y las dimensiones se calculan automáticamente desde el config.
+
+> Los subtítulos usan un reparto de tiempo uniforme por palabra (funciona sin
+> audio). Cuando agregues voz en off, puedes sustituirlo por timestamps reales
+> de Whisper con el comando `/add-captions` del plugin.
 
 ## Rendering in Claude Code on the web
 

@@ -1,18 +1,20 @@
 import "./index.css";
 import { Composition } from "remotion";
-import { InstagramReel, REEL, REEL_DURATION } from "./InstagramReel";
+import { ProductivityReel } from "./ProductivityReel";
+import { reelConfig } from "./config/reel.config";
+import { totalDuration } from "./lib/timeline";
 
 export const RemotionRoot: React.FC = () => {
   return (
     <>
       <Composition
-        id="InstagramReel"
-        component={InstagramReel}
-        durationInFrames={REEL_DURATION}
-        fps={30}
-        width={1080}
-        height={1920}
-        defaultProps={REEL}
+        id="ProductivityReel"
+        component={ProductivityReel}
+        durationInFrames={totalDuration(reelConfig)}
+        fps={reelConfig.fps}
+        width={reelConfig.width}
+        height={reelConfig.height}
+        defaultProps={{ config: reelConfig }}
       />
     </>
   );
