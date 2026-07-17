@@ -62,21 +62,24 @@ primera vez:
 npm run subtitle -- mi-video.mov
 ```
 
-### Puesta en marcha en Windows (paso a paso)
+### Windows — modo fácil (arrastrar y soltar) ⭐
 
 1. Instala **Node.js LTS** desde https://nodejs.org (siguiente-siguiente-fin).
-2. Descarga este proyecto y descomprímelo (o `git clone`).
-3. Abre **PowerShell** en la carpeta del proyecto (clic derecho → "Abrir en
-   Terminal") y ejecuta una vez:
-   ```powershell
-   npm install
-   ```
-4. Copia tu video a esa carpeta y ejecútalo:
-   ```powershell
-   npm run subtitle -- IMG_9323.mov
-   ```
-   La primera vez descarga Whisper (binario precompilado, sin compilar nada).
-   Al terminar tienes `IMG_9323-subtitulado.mp4` en la misma carpeta.
+   Solo hay que hacerlo una vez.
+2. Descarga este proyecto (botón verde **Code → Download ZIP** en GitHub) y
+   descomprímelo.
+3. **Arrastra tu video encima del archivo `Subtitular-video.bat`** y suéltalo.
+
+Eso es todo: la primera vez instala lo necesario y descarga Whisper solo; al
+terminar tienes `tu-video-subtitulado.mp4` junto al original.
+
+### Windows — por terminal (equivalente)
+
+```powershell
+npm install
+npm run subtitle -- IMG_9323.mov
+```
+La primera vez descarga Whisper (binario precompilado, sin compilar nada).
 
 Opciones:
 
