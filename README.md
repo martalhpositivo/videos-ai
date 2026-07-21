@@ -54,6 +54,15 @@ Identidad visual real del concesionario (rojo `#EB2026`, fondo `#0D0D0F`, ámbar
   npx remotion render Scene3D out/intro3d.mp4 --gl=angle
   ```
 
+- **`VideoWithFX`** — añade **intro 3D + rótulos + stickers animados + cierre**
+  sobre cualquier video, para hacerlo más atractivo en reels. Textos y stickers
+  en `src/config/fx.config.ts`. Úsalo así:
+  ```console
+  npm run fx -- "1. PAPELES E IMPUESTOS.mp4"
+  ```
+  (En Windows: arrastra el video sobre `Anadir-efectos.bat`.) Detecta las
+  dimensiones/duración del video y usa `--gl=angle` para el 3D automáticamente.
+
 - **`VideoWithCaptions`** — quema **subtítulos animados estilo TikTok** sobre un
   video existente, transcribiendo el audio automáticamente con **Whisper**
   (local, en español, sin API key). Detecta solas las dimensiones, duración y

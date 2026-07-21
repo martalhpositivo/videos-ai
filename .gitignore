@@ -7,9 +7,10 @@ build
 # Whisper.cpp binaries + models (downloaded by `npm run subtitle`)
 whisper.cpp
 
-# Temp files the subtitle script writes into public/
+# Temp files the subtitle/fx scripts write into public/
 public/__subtitle_input.*
 public/__subtitle_audio.wav
+public/__fx_input.*
 public/_test.mp4
 
 # Ignore the output video from Git but not videos you import into src/.

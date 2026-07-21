@@ -35,6 +35,7 @@
     "dev": "remotion studio",
     "build": "remotion bundle",
     "subtitle": "node scripts/subtitle.mjs",
+    "fx": "node scripts/fx.mjs",
     "upgrade": "remotion upgrade",
     "lint": "eslint src && tsc"
   },

@@ -31,6 +31,7 @@ Compositions (registered in `src/Root.tsx`):
 | `AutomarketReel` | reusa `ProductivityReel` | `src/config/brands/automarket-durango.ts` (`automarketReelConfig`) | Reel de marca del concesionario |
 | `AutomarketCar` | `src/AutomarketCar.tsx` | `src/config/car.config.ts` | Ficha "Coche de la semana" |
 | `Scene3D` | `src/Scene3D.tsx` | (código) | Intro 3D con Three.js |
+| `VideoWithFX` | `src/VideoWithFX.tsx` | `src/config/fx.config.ts` | Intro 3D + rótulos + stickers sobre un video |
 | `VideoWithCaptions` | `src/VideoWithCaptions.tsx` | `src/config/captions.config.ts` | Subtítulos quemados sobre un video |
 
 Shared: `src/components/` (Scene, Captions, BurnedCaptions, Background,
@@ -68,7 +69,18 @@ ruta aquí, o `null` para el marcador), `model`, `details`, `price`, `specs[]`,
 red. Para texto, superpón HTML 2D encima del `<ThreeCanvas>`.
 **Renderizar 3D requiere `--gl=angle`** (ver más abajo).
 
-### 4. Subtitular un video (Whisper, sin API key)
+### 4. Añadir efectos a un video (intro 3D + gráficos)
+
+```
+npm run fx -- <video> [--out salida.mp4]
+```
+
+`scripts/fx.mjs` copia el video a `public/`, lo pasa por la composición
+`VideoWithFX` (intro 3D, rótulo, stickers temporizados, cierre) y renderiza con
+`--gl=angle`. Edita textos/stickers en `src/config/fx.config.ts`. En Windows:
+`Anadir-efectos.bat` (arrastrar y soltar).
+
+### 5. Subtitular un video (Whisper, sin API key)
 
 ```
 npm run subtitle -- <video> [--lang es] [--model medium] [--out salida.mp4]

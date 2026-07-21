@@ -6,6 +6,8 @@ import { automarketReelConfig } from "./config/brands/automarket-durango";
 import { AutomarketCar } from "./AutomarketCar";
 import { carConfig } from "./config/car.config";
 import { Scene3D } from "./Scene3D";
+import { VideoWithFX, calculateVideoWithFxMetadata } from "./VideoWithFX";
+import { fxConfig } from "./config/fx.config";
 import { totalDuration } from "./lib/timeline";
 import {
   VideoWithCaptions,
@@ -56,6 +58,18 @@ export const RemotionRoot: React.FC = () => {
         fps={30}
         width={1080}
         height={1920}
+      />
+
+      {/* Efectos (intro 3D + rótulos + stickers) sobre un video (via `npm run fx`). */}
+      <Composition
+        id="VideoWithFX"
+        component={VideoWithFX}
+        durationInFrames={300}
+        fps={30}
+        width={1080}
+        height={1920}
+        defaultProps={{ config: fxConfig }}
+        calculateMetadata={calculateVideoWithFxMetadata}
       />
 
       {/* Subtítulos automáticos quemados sobre un video (via `npm run subtitle`). */}
