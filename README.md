@@ -47,6 +47,13 @@ Identidad visual real del concesionario (rojo `#EB2026`, fondo `#0D0D0F`, ámbar
 - Los **subtítulos quemados** (`npm run subtitle`) salen con su marca: palabra
   activa en ámbar y scrim para legibilidad sobre cualquier metraje.
 
+- **`Scene3D`** — intro **3D** con Three.js (`@remotion/three`): toroide rojo
+  metálico girando + cubos ámbar en órbita, con la marca Automarket. Para
+  renderizarlo por CLI hay que activar el backend OpenGL:
+  ```console
+  npx remotion render Scene3D out/intro3d.mp4 --gl=angle
+  ```
+
 - **`VideoWithCaptions`** — quema **subtítulos animados estilo TikTok** sobre un
   video existente, transcribiendo el audio automáticamente con **Whisper**
   (local, en español, sin API key). Detecta solas las dimensiones, duración y

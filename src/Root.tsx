@@ -5,6 +5,7 @@ import { reelConfig } from "./config/reel.config";
 import { automarketReelConfig } from "./config/brands/automarket-durango";
 import { AutomarketCar } from "./AutomarketCar";
 import { carConfig } from "./config/car.config";
+import { Scene3D } from "./Scene3D";
 import { totalDuration } from "./lib/timeline";
 import {
   VideoWithCaptions,
@@ -45,6 +46,16 @@ export const RemotionRoot: React.FC = () => {
         width={carConfig.width}
         height={carConfig.height}
         defaultProps={{ config: carConfig }}
+      />
+
+      {/* Intro 3D de marca (Three.js). */}
+      <Composition
+        id="Scene3D"
+        component={Scene3D}
+        durationInFrames={180}
+        fps={30}
+        width={1080}
+        height={1920}
       />
 
       {/* Subtítulos automáticos quemados sobre un video (via `npm run subtitle`). */}
